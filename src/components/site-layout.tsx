@@ -69,11 +69,11 @@ function SiteHeader() {
         <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-[var(--p2-white)]/85">
           {navGroups.map((g) => (
             <div key={g.label} className="relative group">
-              <button className="flex items-center gap-1 py-2 hover:text-[var(--p2-green)] transition-colors">
+              <button type="button" aria-haspopup="true" className="flex items-center gap-1 py-2 hover:text-[var(--p2-green)] transition-colors">
                 {g.label}
                 <ChevronDown size={14} className="shrink-0 transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200">
                 <div className="bg-[var(--p2-surface)] border border-[var(--p2-line)] rounded-xl shadow-xl p-3 min-w-[260px]">
                   {g.items.map((item) => (
                     <Link

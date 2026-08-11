@@ -6,6 +6,26 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/tanstack/vite";
+import path from "node:path";
+import type { Plugin, ResolvedConfig } from "vite";
+
+// Compatibilidad Windows: el plugin MCP compara config.root (que Vite entrega
+// normalizado con "/") contra rutas de path.resolve (que en Windows usan "\"),
+// y aborta el dev server. Le pasamos el root con el separador nativo del SO.
+// En Linux/macOS path.resolve es idempotente, así que no cambia nada.
+function mcpPluginCrossPlatform(): Plugin {
+  const plugin = mcpPlugin() as Plugin;
+  // configResolved puede venir como función o como objeto { handler, order }.
+  const hook = plugin.configResolved;
+  const handler = typeof hook === "function" ? hook : hook?.handler;
+  if (!handler) return plugin;
+
+  plugin.configResolved = function (config: ResolvedConfig) {
+    const conRootNativo = { ...config, root: path.resolve(config.root) } as ResolvedConfig;
+    return handler.call(this, conRootNativo);
+  };
+  return plugin;
+}
 
 export default defineConfig({
   tanstackStart: {
@@ -14,6 +34,6 @@ export default defineConfig({
     server: { entry: "server" },
   },
   vite: {
-    plugins: [mcpPlugin()],
+    plugins: [mcpPluginCrossPlatform()],
   },
 });
