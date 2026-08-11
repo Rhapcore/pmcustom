@@ -1,7 +1,7 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import pmcustomLogo from "@/assets/pmcustom-logo.png";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Linkedin } from "lucide-react";
 
 type NavItem = {
   to: string;
@@ -184,6 +184,21 @@ function SiteFooter() {
           <p className="text-[var(--p2-muted)] leading-relaxed">
             Partner tecnológico en sistemas embebidos, IoT y automatización para industrias en Chile y Latinoamérica.
           </p>
+          <div className="mt-6">
+            <div className="p2-eyebrow mb-3">Síguenos</div>
+            <a
+              href="https://www.linkedin.com/company/pmcustom-spa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn de PM CUSTOM"
+              className="inline-flex items-center gap-2 text-[var(--p2-white)]/80 hover:text-[var(--p2-green)] transition-colors"
+            >
+              <span className="inline-flex items-center justify-center h-10 w-10 rounded-lg border border-[var(--p2-line)]">
+                <Linkedin size={18} />
+              </span>
+              LinkedIn
+            </a>
+          </div>
         </div>
         <div>
           <div className="p2-eyebrow mb-4">Productos</div>

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { ContactForm } from "@/components/contact-form";
-import { Mail, Clock, Zap } from "lucide-react";
+import { Mail, Clock, Zap, Linkedin } from "lucide-react";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -77,6 +77,15 @@ function ContactPage() {
                 </div>
               </div>
             </div>
+            <a
+              href="https://www.linkedin.com/company/pmcustom-spa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-[var(--p2-white)]/80 hover:text-[var(--p2-green)] transition-colors"
+            >
+              <Linkedin size={20} className="text-[var(--p2-green)]" />
+              Síguenos en LinkedIn
+            </a>
           </div>
           <div className="p2-card p-8 md:p-10">
             <h2 className="p2-display text-2xl text-[var(--p2-white)]">Cuéntanos sobre tu proyecto</h2>
