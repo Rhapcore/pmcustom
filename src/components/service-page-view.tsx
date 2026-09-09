@@ -21,8 +21,8 @@ export function ServicePageView({ service, extra }: { service: ServiceData; extr
               <Link to="/casos-exito" className="p2-btn-ghost">Ver casos de éxito</Link>
             </div>
           </div>
-          <div className="p2-card aspect-[4/3] overflow-hidden">
-            <img src={service.image} alt={service.title} className="w-full h-full object-cover" loading="lazy" />
+          <div className="p2-card overflow-hidden bg-[var(--p2-surface-2)]">
+            <img src={service.image} alt={service.title} className="w-full h-auto object-contain" loading="lazy" />
           </div>
         </div>
       </section>

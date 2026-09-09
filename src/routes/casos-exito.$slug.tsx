@@ -65,8 +65,8 @@ function CaseDetail() {
             <p className="mt-6 text-lg text-[var(--p2-white)]/80 leading-relaxed">{c.description}</p>
             <Link to="/contacto" className="mt-8 inline-flex p2-btn">Quiero algo similar →</Link>
           </div>
-          <div className="p2-card aspect-[4/3] overflow-hidden">
-            <img src={c.image} alt={c.title} className="w-full h-full object-cover" loading="lazy" />
+          <div className="p2-card overflow-hidden bg-[var(--p2-surface-2)]">
+            <img src={c.image} alt={c.title} className="w-full h-auto object-contain" loading="lazy" />
           </div>
         </div>
       </section>
